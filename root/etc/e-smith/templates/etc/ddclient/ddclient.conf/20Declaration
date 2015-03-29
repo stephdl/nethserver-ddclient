@@ -9,7 +9,8 @@
 
         my $urlcheckip = $ddclient{'urlcheckip'} || 'checkip.dyndns.org';
 
-	$OUT .="use=web, web=$urlcheckip\/, web-skip='IP Address:' \n";
+	$OUT .="use=web, web=$urlcheckip\/ ";
+        $OUT .=", web-skip='IP Address:' \n" unless ($urlcheckip eq 'myip.dnsdynamic.org');
 
 foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
     {
@@ -129,7 +130,15 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
                         $pubserv='dynamicdns.park-your-domain.com';
                         $protocol='namecheap';
                     }
-		
+
+		 elsif( $dns eq 'DNSDYNAMIC' )
+                    {
+                        $explain='## DNSDYNAMIC (myip.dnsdynamic.org) dynamic addresses';
+                        $pubserv='www.dnsdynamic.org';
+                        $protocol='dyndns2';
+                    }
+                
+
 		if($pubserv ne '')
 		{
 		    $OUT .="##\n";

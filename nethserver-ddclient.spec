@@ -1,7 +1,7 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
 Version: 1.0.0
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %changelog
+* Tue Apr 14 2015 Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.0-4-ns6
+- added dnsdynamic.org
+
 * Tue Apr 14 2015 Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.0-3-ns6
 - added a tab to manage settings of ddclient service
 

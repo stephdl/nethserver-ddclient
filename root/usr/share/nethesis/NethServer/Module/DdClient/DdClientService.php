@@ -22,7 +22,7 @@ class DdClientService extends \Nethgui\Controller\AbstractController
     $this->declareParameter('DeamonUpdate', Validate::POSITIVE_INTEGER, array('configuration', 'ddclient', 'DeamonUpdate'));
     $this->declareParameter('SSL', $this->createValidator()->memberOf('yes','no'), array('configuration', 'ddclient', 'SSL'));
     $this->declareParameter('status', Validate::SERVICESTATUS, array('configuration', 'ddclient', 'status'));
-    $this->declareParameter('urlcheckip', Validate::HOSTNAME, array('configuration', 'ddclient', 'urlcheckip'));
+    $this->declareParameter('urlcheckip', Validate::NOTEMPTY, array('configuration', 'ddclient', 'urlcheckip'));
 
     $this->setDefaultValues('DeamonUpdate', '300');
     $this->setDefaultValues('SSL', 'yes');
@@ -50,6 +50,8 @@ class DdClientService extends \Nethgui\Controller\AbstractController
                  'ipdetect.dnspark.com' => $view->translate('ipdetect.dnspark.com'),
                  'checkip.dyndns.org:8245' => $view->translate('checkip.dyndns.org:8245'),
                  'ip.changeip.com' => $view->translate('ip.changeip.com'),
+                 'myip.dnsdynamic.org' => $view->translate('myip.dnsdynamic.org'),
+
        ));
 
 }
