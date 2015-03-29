@@ -2,6 +2,8 @@
     use esmith::DB;
     use esmith::HostsDB;
     my $hdb = esmith::HostsDB->open_ro() || return '# hosts DB is not available';
+    my $status = ${ddclient}{status} || 'enabled';
+    return '' if $status ne 'enabled';
 
     $OUT='';
 

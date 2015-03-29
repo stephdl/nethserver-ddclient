@@ -8,6 +8,11 @@ $L['password_label'] = 'Password';
 $L['mx_label'] = 'Mail Exchanger hostname';
 $L['Create_DynDns_Header'] = 'Create a new dynamic DNS client';
 $L['Update_DynDns_Header'] = 'Update a dynamic DNS client';
+$L['DdClientService_Title'] = 'DdClient Service Settings';
+$L['status_label'] = 'Service Status';
+$L['SSL_label'] = 'Enable SSL';
+$L['urlcheckip_label'] = 'Select the service to check your external IP';
+$L['Deamon Update (${0})'] = 'Deamon Update Frequency (${0})';
 $L['DynDns_DYNDNS1_label'] = 'Dyndns.org dynamic addresses';
 $L['DynDns_DYNDNS2_label'] = 'Dyndns.org static addresses';
 $L['DynDns_DYNDNS3_label'] = 'Dyndns.org custom addresses';
@@ -25,3 +30,4 @@ $L['DynDns_CHANGEIP_label'] = 'ChangeIP (changeip.com) dynamic adresses';
 $L['DynDns_NAMECHEAP_label'] = 'NameCheap (namecheap.com) dynamic adresses';
 $L['DynDns_Credentials_Title'] = 'Dynamic DNS Credentials';
 $L['DynDns_Provider_Title'] = 'Dynamic DNS Providers';
+
