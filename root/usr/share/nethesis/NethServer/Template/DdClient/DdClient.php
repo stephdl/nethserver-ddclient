@@ -22,21 +22,21 @@ $login = $view->panel()
 
  $destination = $view->panel()
     ->setAttribute('title', $T('DynDns_Provider_Title'))
+        ->insert($view->radioButton('DynDns', 'CHANGEIP'))
+        ->insert($view->radioButton('DynDns', 'DNSPARK'))
+        ->insert($view->radioButton('DynDns', 'DSLREPORTS'))
+        ->insert($view->radioButton('DynDns', 'DTDNS'))
         ->insert($view->radioButton('DynDns', 'DYNDNS1'))
         ->insert($view->radioButton('DynDns', 'DYNDNS2'))
         ->insert($view->radioButton('DynDns', 'DYNDNS3'))
-        ->insert($view->radioButton('DynDns', 'ZONEDIT'))
-        ->insert($view->radioButton('DynDns', 'EASYDNS'))
-        ->insert($view->radioButton('DynDns', 'HAMMER'))
-        ->insert($view->radioButton('DynDns', 'DSLREPORTS'))
-        ->insert($view->radioButton('DynDns', 'EURODYNDNS'))
-        ->insert($view->radioButton('DynDns', 'DTDNS'))
-        ->insert($view->radioButton('DynDns', 'LOOPIA'))
-        ->insert($view->radioButton('DynDns', 'DNSPARK'))
         ->insert($view->radioButton('DynDns', 'DYNHOST'))
-        ->insert($view->radioButton('DynDns', 'NOIP'))
-        ->insert($view->radioButton('DynDns', 'CHANGEIP'))
+        ->insert($view->radioButton('DynDns', 'EASYDNS'))
+        ->insert($view->radioButton('DynDns', 'EURODYNDNS'))
+        ->insert($view->radioButton('DynDns', 'HAMMER'))
+        ->insert($view->radioButton('DynDns', 'LOOPIA'))
         ->insert($view->radioButton('DynDns', 'NAMECHEAP'))
+        ->insert($view->radioButton('DynDns', 'NOIP'))
+        ->insert($view->radioButton('DynDns', 'ZONEDIT'))
 ;
 
 $tabs = $view->tabs()
@@ -44,5 +44,5 @@ $tabs = $view->tabs()
 ->insert($destination);
 echo $tabs;
         
-echo $view->buttonList($view::BUTTON_SUBMIT | $view::BUTTON_CANCEL | $view::BUTTON_HELP);i
+echo $view->buttonList($view::BUTTON_SUBMIT | $view::BUTTON_CANCEL | $view::BUTTON_HELP);
 ?>
