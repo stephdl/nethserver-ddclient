@@ -9,8 +9,10 @@
 
         my $urlcheckip = $ddclient{'urlcheckip'} || 'checkip.dyndns.org';
 
-	$OUT .="use=web, web=$urlcheckip\/ ";
-        $OUT .=", web-skip='IP Address:' \n" unless ($urlcheckip eq 'myip.dnsdynamic.org');
+	$OUT .="use=web, web=$urlcheckip\/";
+        $OUT .=", web-skip='Current IP Address:' \n" if  ($urlcheckip =~ 'checkip.dyndns.org');
+        $OUT .=", web-skip='Current Address:' \n" if  ($urlcheckip eq 'ipdetect.dnspark.com'); 
+        $OUT .="\n";
 
 foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
     {
