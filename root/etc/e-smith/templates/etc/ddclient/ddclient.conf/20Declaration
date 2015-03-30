@@ -1,193 +1,220 @@
 {
-    use esmith::DB;
-    use esmith::HostsDB;
-    my $hdb = esmith::HostsDB->open_ro() || return '# hosts DB is not available';
-    my $status = ${ddclient}{status} || 'enabled';
-    return '' if $status ne 'enabled';
+use esmith::ConfigDB;
+use esmith::DB;
 
-    $OUT='';
+my $hdb = esmith::ConfigDB->open_ro('/var/lib/nethserver/db/dyndns') 
+                        || esmith::ConfigDB->create('/var/lib/nethserver/db/dyndns');
 
-        my $urlcheckip = $ddclient{'urlcheckip'} || 'checkip.dyndns.org';
+my $hdb = esmith::HostsDB->open_ro() || return '# hosts DB is not available';
+my $status = ${ddclient}{status} || 'enabled';
 
-	$OUT .="use=web, web=$urlcheckip\/";
-        $OUT .=", web-skip='Current IP Address:' \n" if  ($urlcheckip =~ 'checkip.dyndns.org');
-        $OUT .=", web-skip='Current Address:' \n" if  ($urlcheckip eq 'ipdetect.dnspark.com'); 
-        $OUT .="\n";
+return '' if $status ne 'enabled';
+
+$OUT='';
+
+my $urlcheckip = $ddclient{'urlcheckip'} || 'checkip.dyndns.org';
+
+$OUT .="use=web, web=$urlcheckip\/";
+$OUT .=", web-skip='Current IP Address:' \n" if ($urlcheckip =~ 'checkip.dyndns.org');
+$OUT .=", web-skip='Current Address:' \n" if ($urlcheckip eq 'ipdetect.dnspark.com'); 
+$OUT .="\n";
 
 foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
     {
-	{
+        {
 
-		my $dns      = $host->prop('DynDns') || '';
- next if ($dns eq '');
-		$dns =~ tr/a-z/A-Z/;
-		my $login    = $host->prop('login');
-		my $password = $host->prop('password');
-		my $pubserv='';
-		my $static='';
-		my $custom='';
-		my $wildcard='';
-		my $mx=$host->prop('mx') || '';
-		my $backupmx='';
-		my $protocol='';
-		my $explain='';
-		
-		if( $dns eq 'DYNDNS1')
-		    {
-			$explain='## dyndns.org dynamic addresses';
-			$pubserv ='members.dyndns.org';
-			$protocol='dyndns2';
-			$static='no';
-			$custom='no';
-			$wildcard='yes';
-		    }
-		elsif( $dns eq 'DYNDNS2')
-		    {
-			$explain='## dyndns.org static addresses';
-			$pubserv ='members.dyndns.org';
-			$protocol='dyndns2';
-			$static  ='yes';
-			$custom  ='no';
-			$wildcard='yes';
-		    }
-		elsif( $dns eq 'DYNDNS3')
-		    {
-			$explain='## dyndns.org static2 addresses';
-			$pubserv='members.dyndns.org';
-			$custom  ='yes';
-			$protocol='dyndns2';
-			$static  ='';
-			$wildcard='yes';
-		    }
-		elsif( $dns eq 'ZONEDIT')
-		    {
-			$explain='## zoneedit dynamic addresses';
-			$pubserv='www.zoneedit.com';
-			$protocol='zoneedit1';
-		    }
-		elsif( $dns eq 'EASYDNS')
-		    {
-			$explain='## easydns.com dynamic addresses';
-			$pubserv='members.easydns.com';
-			$protocol='easydns';
-		    }
-		elsif( $dns eq 'HAMMER')
-		    {
-			$explain='## hammer dup.hn.org dynamic addresses';
-			$pubserv='dup.hn.org';
-			$protocol='hammernode1';
-		    }
-		elsif( $dns eq 'DSLREPORTS' )
-		    {
-			$explain='## dslreports.org dynamic addresses';
-			$pubserv='members.dslreports.com';
-			$protocol='dslreports1';
-		    }
-		elsif( $dns eq 'EURODYNDNS' )
-		    {
-			$explain='## euroddyndns.org dynamic addresses';
-			$pubserv='eurodyndns.org';
-			$protocol='namecheap';
-		    }
-		elsif( $dns eq 'DTDNS' )
-		    {
-			$explain='## DtDNS (www.dtdns.com) dynamic addresses';
-			$pubserv='www.dtdns.com';
-			$protocol='dtdns';
-		    }
-		elsif( $dns eq 'LOOPIA' )
-		    {
-			$explain='## Loopia (loopia.se) dynamic addresses';
-			$pubserv='dns.loopia.se';
-			$protocol='dyndns2';
-		    }
-		elsif( $dns eq 'DNSPARK' )
-		    {
-			$explain='## dnspark.com dynamic addresses';
-			$pubserv='www.dnspark.com';
-			$protocol='dnspark';
-		    }
-		elsif( $dns eq 'DYNHOST' )
-		    {
-			$explain='## DynHost (ovh.com) dynamic addresses';
-			$pubserv='www.ovh.com';
-			$protocol='dyndns2';
-		    }
-		elsif( $dns eq 'NOIP' )
-		    {
-			$explain='## Noip (noip.com) dynamic addresses';
-			$pubserv='dynupdate.no-ip.com';
-			$protocol='noip';
-		    }
-		elsif( $dns eq 'CHANGEIP' )
-		    {
-			$explain='## ChangeIP (changeip.com) dynamic addresses';
-			$pubserv='nic.changeip.com';
-			$protocol='dyndns2';
-		    }				
+        my $dns      = $host->prop('DynDns') || '';
+        next if ($dns eq '');
+        $dns =~ tr/a-z/A-Z/;
+        my $login    = $host->prop('login');
+        my $password = $host->prop('password');
+        my $pubserv='';
+        my $static='';
+        my $custom='';
+        my $wildcard='';
+        my $mx=$host->prop('mx') || '';
+        my $backupmx='';
+        my $protocol='';
+        my $explain='';
 
-                elsif( $dns eq 'NAMECHEAP' )
-                    {
-                        $explain='## NAMECHEAP (namecheap.com) dynamic addresses';
-                        $pubserv='dynamicdns.park-your-domain.com';
-                        $protocol='namecheap';
-                    }
+        if( $dns eq 'DYNDNS1')
+            {
+            $explain='## dyndns.org dynamic addresses';
+            $pubserv ='members.dyndns.org';
+            $protocol='dyndns2';
+            $static='no';
+            $custom='no';
+            $wildcard='yes';
+            }
 
-		 elsif( $dns eq 'DNSDYNAMIC' )
-                    {
-                        $explain='## DNSDYNAMIC (myip.dnsdynamic.org) dynamic addresses';
-                        $pubserv='www.dnsdynamic.org';
-                        $protocol='dyndns2';
-                    }
+        elsif( $dns eq 'DYNDNS2')
+            {
+            $explain='## dyndns.org static addresses';
+            $pubserv ='members.dyndns.org';
+            $protocol='dyndns2';
+            $static  ='yes';
+            $custom  ='no';
+            $wildcard='yes';
+            }
 
-                 elsif( $dns eq 'FREEDNS' )
-                    {
-                        $explain='## FREEDNS (freedns.afraid.org) dynamic addresses';
-                        $pubserv='freedns.afraid.org';
-                        $protocol='dyndns2';
-                    }
-        
+        elsif( $dns eq 'DYNDNS3')
+            {
+            $explain='## dyndns.org static2 addresses';
+            $pubserv='members.dyndns.org';
+            $custom  ='yes';
+            $protocol='dyndns2';
+            $static  ='';
+            $wildcard='yes';
+            }
 
-		if($pubserv ne '')
-		{
-		    $OUT .="##\n";
-		    $OUT .=$explain."\n";
-		    $OUT .="##\n";
-		    $OUT .="server=".$pubserv.", \\\n";
-		    $OUT .="protocol=".$protocol.", \\\n";
-		    if( $dns eq 'DTDNS' ) {
-			$OUT .="client=ddclient, \\\n";
-		    }
-		    if( $dns eq 'LOOPIA' ) {
-			$OUT .="use=web, \\\n";
-			$OUT .="web=loopia, \\\n";
-			$OUT .="script=/XDynDNSServer/XDynDNS.php, \\\n";
-		    }
-		    if($static ne '') {
-		    	$OUT .="static=".$static.", \\\n";
-		    }
-		    
-		    if($wildcard ne '') {
-		    	$OUT .="wildcard=".$wildcard.", \\\n";
-		    }
-		    
-		    if($custom ne '') {
-		    	$OUT .="custom=".$custom.", \\\n";
-		    }
-		    
-		    if ($mx ne '') {
-			$OUT .="mx=".$mx.", \\\n";
-		    }
-		    
-		    $OUT .="login=".$login.", \\\n";
-		    $OUT .="password=".$password." \\\n";
-                    $OUT .="\@\n" if ( $dns eq 'NAMECHEAP' );
+        elsif( $dns eq 'ZONEDIT')
+            {
+            $explain='## zoneedit dynamic addresses';
+            $pubserv='www.zoneedit.com';
+            $protocol='zoneedit1';
+            }
 
-		    $OUT .=$host->key()."\n" if ( $dns ne 'NAMECHEAP' );
-		    $OUT .="##\n";
-		    $OUT .="##\n";
-		}
-	    }
-	}
+        elsif( $dns eq 'EASYDNS')
+            {
+            $explain='## easydns.com dynamic addresses';
+            $pubserv='members.easydns.com';
+            $protocol='easydns';
+            }
+
+        elsif( $dns eq 'HAMMER')
+            {
+            $explain='## hammer dup.hn.org dynamic addresses';
+            $pubserv='dup.hn.org';
+            $protocol='hammernode1';
+            }
+
+        elsif( $dns eq 'DSLREPORTS' )
+            {
+            $explain='## dslreports.org dynamic addresses';
+            $pubserv='members.dslreports.com';
+            $protocol='dslreports1';
+            }
+
+        elsif( $dns eq 'EURODYNDNS' )
+            {
+            $explain='## euroddyndns.org dynamic addresses';
+            $pubserv='eurodyndns.org';
+            $protocol='namecheap';
+            }
+
+        elsif( $dns eq 'DTDNS' )
+            {
+            $explain='## DtDNS (www.dtdns.com) dynamic addresses';
+            $pubserv='www.dtdns.com';
+            $protocol='dtdns';
+            }
+
+        elsif( $dns eq 'LOOPIA' )
+            {
+            $explain='## Loopia (loopia.se) dynamic addresses';
+            $pubserv='dns.loopia.se';
+            $protocol='dyndns2';
+            }
+
+        elsif( $dns eq 'DNSPARK' )
+            {
+            $explain='## dnspark.com dynamic addresses';
+            $pubserv='www.dnspark.com';
+            $protocol='dnspark';
+            }
+
+        elsif( $dns eq 'DYNHOST' )
+            {
+            $explain='## DynHost (ovh.com) dynamic addresses';
+            $pubserv='www.ovh.com';
+            $protocol='dyndns2';
+            }
+
+        elsif( $dns eq 'NOIP' )
+            {
+            $explain='## Noip (noip.com) dynamic addresses';
+            $pubserv='dynupdate.no-ip.com';
+            $protocol='noip';
+            }
+
+        elsif( $dns eq 'CHANGEIP' )
+            {
+            $explain='## ChangeIP (changeip.com) dynamic addresses';
+            $pubserv='nic.changeip.com';
+            $protocol='dyndns2';
+            }
+
+        elsif( $dns eq 'NAMECHEAP' )
+            {
+            $explain='## NAMECHEAP (namecheap.com) dynamic addresses';
+            $pubserv='dynamicdns.park-your-domain.com';
+            $protocol='namecheap';
+            }
+
+        elsif( $dns eq 'DNSDYNAMIC' )
+            {
+            $explain='## DNSDYNAMIC (myip.dnsdynamic.org) dynamic addresses';
+            $pubserv='www.dnsdynamic.org';
+            $protocol='dyndns2';
+            }
+
+        elsif( $dns eq 'FREEDNS' )
+            {
+            $explain='## FREEDNS (freedns.afraid.org) dynamic addresses';
+            $pubserv='freedns.afraid.org';
+            $protocol='dyndns2';
+            }
+
+
+        if($pubserv ne '')
+            {
+            $OUT .="##\n";
+            $OUT .=$explain."\n";
+            $OUT .="##\n";
+            $OUT .="server=".$pubserv.", \\\n";
+            $OUT .="protocol=".$protocol.", \\\n";
+
+            if( $dns eq 'DTDNS' )
+                {
+                $OUT .="client=ddclient, \\\n";
+                }
+
+            if( $dns eq 'LOOPIA' )
+                {
+                $OUT .="use=web, \\\n";
+                $OUT .="web=loopia, \\\n";
+                $OUT .="script=/XDynDNSServer/XDynDNS.php, \\\n";
+                }
+
+            if($static ne '')
+                {
+                $OUT .="static=".$static.", \\\n";
+                }
+
+            if($wildcard ne '')
+                {
+                $OUT .="wildcard=".$wildcard.", \\\n";
+                }
+
+            if($custom ne '') 
+                {
+                $OUT .="custom=".$custom.", \\\n";
+                }
+
+            if ($mx ne '')
+                {
+                $OUT .="mx=".$mx.", \\\n";
+                }
+
+            $OUT .="login=".$login.", \\\n";
+            $OUT .="password=".$password." \\\n";
+            $OUT .="\@\n" if ( $dns eq 'NAMECHEAP' );
+
+            $OUT .=$host->key()."\n" if ( $dns ne 'NAMECHEAP' );
+            $OUT .="##\n";
+            $OUT .="##\n";
+            }
+        }
+    }
 }
 

@@ -29,7 +29,7 @@ class DdClient extends \Nethgui\Controller\TableController
         );
 
         $this
-            ->setTableAdapter($this->getPlatform()->getTableAdapter('hosts', 'dyndns'))
+            ->setTableAdapter($this->getPlatform()->getTableAdapter('dyndns', 'dyndns'))
             ->setColumns($columns)            
             ->addRowAction(new \Nethgui\Controller\Table\Modify('delete', $parameterSchema, 'Nethgui\Template\Table\Delete'))
             ->addRowAction(new \Nethgui\Controller\Table\Modify('update', $parameterSchema, 'NethServer\Template\DdClient\DdClient'))
