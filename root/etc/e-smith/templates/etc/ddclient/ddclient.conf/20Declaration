@@ -161,7 +161,7 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             {
             $explain='## FREEDNS (freedns.afraid.org) dynamic addresses';
             $pubserv='freedns.afraid.org';
-            $protocol='dyndns2';
+            $protocol='freedns';
             }
 
 
