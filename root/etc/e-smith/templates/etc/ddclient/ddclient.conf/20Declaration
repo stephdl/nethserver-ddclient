@@ -5,8 +5,7 @@ use esmith::DB;
 my $hdb = esmith::ConfigDB->open_ro('/var/lib/nethserver/db/dyndns') 
                         || esmith::ConfigDB->create('/var/lib/nethserver/db/dyndns');
 
-my $hdb = esmith::HostsDB->open_ro() || return '# hosts DB is not available';
-my $status = ${ddclient}{status} || 'enabled';
+my $status = ${ddclient}{status} || 'disabled';
 
 return '' if $status ne 'enabled';
 
