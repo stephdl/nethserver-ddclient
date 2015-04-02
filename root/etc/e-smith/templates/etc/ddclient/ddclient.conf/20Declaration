@@ -27,6 +27,8 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
         $dns =~ tr/a-z/A-Z/;
         my $login    = $host->prop('login');
         my $password = $host->prop('password');
+        my $customservice = $host->prop('CustomService') || 'disabled';
+        my $dynserver = $host->prop('DynServer') || '';
         my $pubserv='';
         my $static='';
         my $custom='';
@@ -36,7 +38,14 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
         my $protocol='';
         my $explain='';
 
-        if( $dns eq 'DYNDNS1')
+        if( $customservice eq 'enabled')
+            {
+            $explain='## Custom dynamic addresses';
+            $pubserv = lc ($dynserver);
+            $protocol= lc ($dns);
+            }
+
+        elsif( $dns eq 'DYNDNS1')
             {
             $explain='## dyndns.org dynamic addresses';
             $pubserv ='members.dyndns.org';

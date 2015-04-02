@@ -20,8 +20,14 @@ $login = $view->panel()
         ->insert($view->textInput('mx'))
 ;
 
- $destination = $view->panel()
+$destination = $view->panel()
     ->setAttribute('title', $T('DynDns_Provider_Title'))
+    ->insert($view->fieldsetSwitch('CustomService', 'enabled', $view::FIELDSETSWITCH_EXPANDABLE)
+        ->setAttribute('label', $T('CustomService_label'))
+        ->insert($view->textInput('DynServer'))
+        ->insert($view->textInput('DynDns')))
+    ->insert($view->fieldsetSwitch('CustomService', 'disabled', $view::FIELDSETSWITCH_EXPANDABLE)
+        ->setAttribute('label', $T('KnownService_label'))
         ->insert($view->radioButton('DynDns', 'CHANGEIP'))
         ->insert($view->radioButton('DynDns', 'DNSDYNAMIC'))
         ->insert($view->radioButton('DynDns', 'DNSPARK'))
@@ -39,7 +45,7 @@ $login = $view->panel()
         ->insert($view->radioButton('DynDns', 'NAMECHEAP'))
         ->insert($view->radioButton('DynDns', 'NOIP'))
         ->insert($view->radioButton('DynDns', 'ZONEDIT'))
-;
+);
 
 $tabs = $view->tabs()
 ->insert($login)

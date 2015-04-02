@@ -1,6 +1,6 @@
-===
+===========
 Dynamic DNS
-===
+===========
 
 Dynamic DNS (DDNS or DynDNS) is a method of automatically updating a name server
 in the Domain Name System (DNS), often in real time, with the active DNS configuration
@@ -17,7 +17,7 @@ Many providers offer commercial or free Dynamic DNS service for this scenario. T
 
 
 DDNS
-=====
+====
 
 Create / Modify
 ---------------
@@ -41,6 +41,13 @@ Password
 
 Mail Exchanger hostname
     You can here your MX field, not available for all DynDNS providers.
+
+Custom Dynamic Provider
+    Here you can enter your custom settings. It is possible that your dynamic dns provider uses
+    specific settings not available here.
+
+    * Server Address (FQDN) : This field is the fully qualified domain name of your  provider server
+    * Ddclient protocol : this field is the ddclient protocol you must use with your provider.
 
 Dynamic DNS Providers
     You can choose between these providers, if yours are not available, please ask to add it.

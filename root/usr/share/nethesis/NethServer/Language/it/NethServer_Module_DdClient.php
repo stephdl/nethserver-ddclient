@@ -2,7 +2,10 @@
 $L['DdClient_Title'] = 'Dynamic DNS Service';
 $L['Key_label'] = 'Dynamic DNS hostname';
 $L['hostname_label'] = 'Dynamic DNS hostname';
-$L['DynDns_label'] = 'Dynamic dns provider';
+$L['DynDns_label'] = 'Ddclient protocol';
+$L['DynServer_label'] = 'Server Address (FQDN)';
+$L['CustomService_label'] = 'Custom Provider settings';
+$L['KnownService_label'] = 'Official Providers settings';
 $L['login_label'] = 'Login';
 $L['password_label'] = 'Password';
 $L['mx_label'] = 'Mail Exchanger hostname';

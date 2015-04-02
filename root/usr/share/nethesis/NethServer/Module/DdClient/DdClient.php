@@ -22,10 +22,12 @@ class DdClient extends \Nethgui\Controller\TableController
         $parameterSchema = array(
             array('hostname', Validate::HOSTNAME_FQDN, \Nethgui\Controller\Table\Modify::KEY),
             array('Description', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
-            array('DynDns', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
+            array('DynDns', Validate::NOTEMPTY, \Nethgui\Controller\Table\Modify::FIELD),
             array('login', Validate::NOTEMPTY, \Nethgui\Controller\Table\Modify::FIELD),
             array('password', Validate::NOTEMPTY, \Nethgui\Controller\Table\Modify::FIELD),
             array('mx', Validate::ANYTHING, \Nethgui\Controller\Table\Modify::FIELD),
+            array('CustomService', Validate::SERVICESTATUS, \Nethgui\Controller\Table\Modify::FIELD),
+            array('DynServer', Validate::HOSTNAME_FQDN, \Nethgui\Controller\Table\Modify::FIELD),
         );
 
         $this
