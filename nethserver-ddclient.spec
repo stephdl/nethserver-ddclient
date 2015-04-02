@@ -1,7 +1,7 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
 Version: 1.0.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
@@ -39,6 +39,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %changelog
+* Sun Apr 19 2015 Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-2-ns6
+- Added dyndnsfree.de
+
 * Sun Apr 19 2015 Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-1-ns6
 - Added a custom field fro the server address and the ddclient protocol
 

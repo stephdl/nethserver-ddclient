@@ -33,5 +33,6 @@ $L['DynDns_CHANGEIP_label'] = 'ChangeIP (changeip.com) dynamic adresses';
 $L['DynDns_NAMECHEAP_label'] = 'NameCheap (namecheap.com) dynamic adresses';
 $L['DynDns_DNSDYNAMIC_label'] = 'DnsDynamic (dnsdynamic.org) dynamic adresses';
 $L['DynDns_FREEDNS_label'] = 'FreeDNS (freedns.afraid.org) dynamic adresses';
+$L['DynDns_DYNDNSFREE_label'] = 'Dyndnsfree (dyndnsfree.de) dynamic adresses';
 $L['DynDns_Credentials_Title'] = 'Dynamic DNS Credentials';
 $L['DynDns_Provider_Title'] = 'Dynamic DNS Providers';

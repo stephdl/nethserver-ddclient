@@ -172,7 +172,12 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $pubserv='freedns.afraid.org';
             $protocol='freedns';
             }
-
+        elsif( $dns eq 'DYNDNSFREE' )
+            {
+            $explain='## DYNDNSFREE (dyndnsfree.de) dynamic addresses';
+            $pubserv='dynup.de';
+            $protocol='dyndns2';
+            }
 
         if($pubserv ne '')
             {
