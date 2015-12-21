@@ -78,7 +78,7 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
         elsif( $dns eq 'ZONEDIT')
             {
             $explain='## zoneedit dynamic addresses';
-            $pubserv='www.zoneedit.com';
+            $pubserv='dynamic.zoneedit.com';
             $protocol='zoneedit1';
             }
 
