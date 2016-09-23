@@ -5,6 +5,6 @@ my $event = "nethserver-ddclient-update";
 event_actions($event, 
 'initialize-default-databases' => '00');
 
-templates2events("/etc/ddclient/ddclient.conf", $event);
+templates2events("/etc/ddclient.conf", $event);
 
 event_services($event, 'ddclient' => 'restart');
