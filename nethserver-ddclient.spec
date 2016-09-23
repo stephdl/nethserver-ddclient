@@ -38,6 +38,11 @@ echo "
 %{makedocs}
 perl createlinks
 
+#force the creation of  the dyndns database....why ????
+for _nsdb in dyndns; do
+   mkdir -p root/%{_nsdbconfdir}/${_nsdb}/{migrate,force,defaults}
+done 
+
 %install
 rm -rf $RPM_BUILD_ROOT
 (cd root   ; find . -depth -print | cpio -dump $RPM_BUILD_ROOT)
@@ -51,6 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %dir %{_nseventsdir}/%{name}-update
+%dir %{_nsdbconfdir}/dyndns
 
 %changelog
 * Mon Dec 21 2015  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-4-ns6
