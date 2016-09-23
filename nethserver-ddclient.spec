@@ -8,7 +8,6 @@ BuildArch: noarch
 URL: http://dev.nethserver.org/projects/nethforge/wiki/%{name}
 BuildRequires: nethserver-devtools
 
-AutoReq: no
 Requires: ddclient
 
 
@@ -50,6 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f e-smith-%{version}-filelist
 %defattr(-,root,root)
+
+%dir %{_nseventsdir}/%{name}-update
 
 %changelog
 * Mon Dec 21 2015  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-4-ns6
