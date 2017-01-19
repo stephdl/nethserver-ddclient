@@ -1,7 +1,7 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
 Version: 1.0.1
-Release: 4%{?dist}
+Release: 5%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
@@ -52,6 +52,9 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %changelog
+* Thu Jan 19 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-5-ns6
+- string DynServer changed in translations
+
 * Mon Dec 21 2015  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-4-ns6
 - changed url of zoneedit 
 - following http://community.nethserver.org/t/ddclient-using-wrong-url-for-zoneedit/2471
