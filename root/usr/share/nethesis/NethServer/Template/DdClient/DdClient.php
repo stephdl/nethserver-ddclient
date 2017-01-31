@@ -45,6 +45,7 @@ $destination = $view->panel()
         ->insert($view->radioButton('DynDns', 'LOOPIA'))
         ->insert($view->radioButton('DynDns', 'NAMECHEAP'))
         ->insert($view->radioButton('DynDns', 'NOIP'))
+        ->insert($view->radioButton('DynDns', 'SELFHOST'))
         ->insert($view->radioButton('DynDns', 'ZONEDIT'))
 );
 

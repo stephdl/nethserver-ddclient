@@ -179,6 +179,13 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $protocol='dyndns2';
             }
 
+        elsif( $dns eq 'SELFHOST' )
+            {
+            $explain='##SELFHOST  dynamic addresses';
+            $pubserv='carol.selfhost.de';
+            $protocol='dyndns2';
+            }
+
         if($pubserv ne '')
             {
             $OUT .="##\n";
