@@ -1,7 +1,7 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 1.0.1
-Release: 6%{?dist}
+Version: 1.0.2
+Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
@@ -59,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Mon Feb 27 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.2-1-ns7
+- Changed the root email
+
 * Tue Jan 31 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.1-6-ns7
 - Added selfhost dynamic dns provider
 
