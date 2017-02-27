@@ -55,8 +55,6 @@ rm -rf $RPM_BUILD_ROOT
 %files -f e-smith-%{version}-filelist
 %defattr(-,root,root)
 
-%dir %{_nseventsdir}/%{name}-update
-%dir %{_nsdbconfdir}/dyndns
 
 %changelog
 * Mon Feb 27 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.3-1
