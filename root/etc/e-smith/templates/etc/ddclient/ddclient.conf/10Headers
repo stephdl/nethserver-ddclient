@@ -7,8 +7,8 @@ return '# ddclient is disabled in the configuration database' if $status ne 'ena
 $OUT .= qq(
 daemon=$deamonupdate                            # check every $deamonupdate seconds
 syslog=yes                                      # log update msgs to syslog
-mail=root\@$SystemName.$DomainName              # mail update msgs to root
-mail-failure=root\@$SystemName.$DomainName      # mail failure msgs to root
+mail=admin\@$DomainName              # mail update msgs to root
+mail-failure=admin\@$DomainName      # mail failure msgs to root
 pid=/var/run/ddclient.pid                       # record PID in file.
 ssl=$ssl
 #);
