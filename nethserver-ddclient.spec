@@ -1,6 +1,6 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 1.0.2
+Version: 1.0.3
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -9,7 +9,7 @@ URL: http://dev.nethserver.org/projects/nethforge/wiki/%{name}
 BuildRequires: nethserver-devtools
 
 Requires: ddclient
-
+Requires: perl-JSON-Any
 
 %description
 NethServer configuration for ddclient
@@ -59,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Mon Feb 27 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.3-1
+- Added cloudfare dynamic dns provider
+
 * Mon Feb 27 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.2-1-ns7
 - Changed the root email
 

@@ -186,6 +186,12 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $protocol='dyndns2';
             }
 
+        elsif( $dns eq 'CLOUDFLARE' )
+            {
+            $explain='##CLOUDFARE  dynamic addresses';
+            $pubserv='www.cloudflare.com';
+            $protocol='cloudflare';
+            }
 
         if($pubserv ne '')
             {
@@ -194,6 +200,13 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $OUT .="##\n";
             $OUT .="server=".$pubserv.", \\\n";
             $OUT .="protocol=".$protocol.", \\\n";
+
+            if ( $dns eq 'CLOUDFLARE' )
+                {
+                $OUT .="zone=".$host->key().", \\\n";
+                $OUT .="use=web, \\\n";
+                $OUT .="web=ip.changeip.com, \\\n";
+                }
 
             if( $dns eq 'DTDNS' )
                 {
