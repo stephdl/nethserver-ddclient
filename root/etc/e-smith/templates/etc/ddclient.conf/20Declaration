@@ -203,7 +203,10 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
 
             if ( $dns eq 'CLOUDFLARE' )
                 {
-                $OUT .="zone=".$host->key().", \\\n";
+                my $dom = $host->key();
+                if ($dom =~ /\.(.*)/){
+                    $OUT .="zone=$1, \\\n";
+                    }
                 $OUT .="use=web, \\\n";
                 $OUT .="web=ip.changeip.com, \\\n";
                 }
