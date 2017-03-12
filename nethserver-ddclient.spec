@@ -18,20 +18,6 @@ NethServer configuration for ddclient
 %setup
 
 %post
-echo "
- Hi
-
- All my development work is done in my free time and from my own expenses. 
- If you consider my work as something helpful, thank you to kindly make 
- a donation to my paypal account and allow me to continue paying my server 
- and all associated costs.
-
- https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZPK8FKHVT4TY8
-
- Thank in advance.
- 
- Stephane de Labrusse Alias Stephdl
-"
 %preun
 
 %build
@@ -54,11 +40,14 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f e-smith-%{version}-filelist
 %defattr(-,root,root)
-
+%doc COPYING
 %dir %{_nseventsdir}/%{name}-update
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Sun Mar 12 2017 Stephane de Labrusse <stephdl@de-labrusse.fr>  1.0.3-2
+- GPL license
+
 * Mon Feb 27 2017  Stephane de Labrusse <stephdl@de-labrusse.fr> - 1.0.3-1
 - Added cloudfare dynamic dns provider
 
