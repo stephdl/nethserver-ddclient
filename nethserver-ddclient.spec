@@ -1,7 +1,7 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 1.0.3
-Release: 2%{?dist}
+Version: 1.0.4
+Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
 BuildArch: noarch
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Wed Mar 29 2017 Stephane de Labrusse <stephdl@de-labrusse.fr>  1.0.4-1
+- Cloudflare support dropped
+
 * Sun Mar 12 2017 Stephane de Labrusse <stephdl@de-labrusse.fr>  1.0.3-2
 - GPL license
 
