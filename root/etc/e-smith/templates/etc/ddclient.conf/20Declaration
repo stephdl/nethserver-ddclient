@@ -193,6 +193,13 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $protocol='cloudflare';
             }
 
+        elsif( $dns eq 'STRATO' )
+            {
+            $explain='##STATO  dynamic addresses';
+            $pubserv='dyndns.strato.com/nic/update';
+            $protocol='dyndns2';
+         }
+
         if($pubserv ne '')
             {
             $OUT .="##\n";
