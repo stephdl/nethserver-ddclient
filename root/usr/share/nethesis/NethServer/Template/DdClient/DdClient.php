@@ -47,8 +47,9 @@ $destination = $view->panel()
         ->insert($view->radioButton('DynDns', 'NAMECHEAP'))
         ->insert($view->radioButton('DynDns', 'NOIP'))
         ->insert($view->radioButton('DynDns', 'SELFHOST')) 
+        ->insert($view->radioButton('DynDns', 'STRATO'))
         ->insert($view->radioButton('DynDns', 'ZONEDIT'))
-);
+    );
 
 $tabs = $view->tabs()
 ->insert($login)

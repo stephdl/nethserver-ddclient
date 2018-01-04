@@ -1,6 +1,6 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 1.0.4
+Version: 1.0.5
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -45,6 +45,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Thu Jan 04 2018 Stephane de Labrusse <stephdl@de-labrusse.fr> 1.0.5-1
+- Strato support added
+
 * Wed Mar 29 2017 Stephane de Labrusse <stephdl@de-labrusse.fr>  1.0.4-1
 - Cloudflare support dropped
 
