@@ -110,13 +110,6 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $protocol='namecheap';
             }
 
-        elsif( $dns eq 'DTDNS' )
-            {
-            $explain='## DtDNS (www.dtdns.com) dynamic addresses';
-            $pubserv='www.dtdns.com';
-            $protocol='dtdns';
-            }
-
         elsif( $dns eq 'LOOPIA' )
             {
             $explain='## Loopia (loopia.se) dynamic addresses';
@@ -216,11 +209,6 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
                     }
                 $OUT .="use=web, \\\n";
                 $OUT .="web=ip.changeip.com, \\\n";
-                }
-
-            if( $dns eq 'DTDNS' )
-                {
-                $OUT .="client=ddclient, \\\n";
                 }
 
             if( $dns eq 'LOOPIA' )
