@@ -131,6 +131,13 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
             $protocol='dyndns2';
             }
 
+        elsif( $dns eq 'DYNU' )
+            {
+            $explain='## Dynu (dynu.com) dynamic addresses';
+            $pubserv='api.dynu.com';
+            $protocol='dyndns2';
+            }
+
         elsif( $dns eq 'NOIP' )
             {
             $explain='## Noip (noip.com) dynamic addresses';
