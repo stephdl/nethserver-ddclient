@@ -16,7 +16,7 @@ $login = $view->panel()
         ->insert($view->textInput('hostname', $keyFlags))
         ->insert($view->textInput('Description'))
         ->insert($view->textInput('login'))
-        ->insert($view->textInput('password'))
+        ->insert($view->textInput('password', $view::TEXTINPUT_PASSWORD))
         ->insert($view->textInput('mx'))
 ;
 
