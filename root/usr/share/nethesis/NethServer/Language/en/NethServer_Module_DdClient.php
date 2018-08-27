@@ -24,7 +24,6 @@ $L['DynDns_EASYDNS_label'] = 'EasyDNS (easydns.com) dynamic addresses';
 $L['DynDns_HAMMER_label'] = 'Hammernode (hn.org) dynamic addresses';
 $L['DynDns_DSLREPORTS_label'] = 'Dslreports.com dynamic-host monitoring';
 $L['DynDns_EURODYNDNS_label'] = 'Eurodyndns.org dynamic adresses';
-$L['DynDns_DTDNS_label'] = 'DtDNS (dtdns.com) dynamic adresses';
 $L['DynDns_LOOPIA_label'] = 'Loopia (loopia.se) dynamic adresses';
 $L['DynDns_DNSPARK_label'] = 'Dnspark (dnspark.com) dynamic adresses';
 $L['DynDns_DYNHOST_label'] = 'DynHost (ovh.com) dynamic adresses';
