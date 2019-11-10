@@ -21,39 +21,40 @@
 #
 
 use strict;
-use warnings;
 use esmith::ConfigDB;
+use esmith::event;
 use JSON;
 use NethServer::ApiTools;
 
+my $eventName = 'nethserver-ddclient-update';
+my @eventArgs = ();
+my $ret;
+
+my $db = esmith::ConfigDB->open('dyndns');
 my $input = NethServer::ApiTools::readInput();
-my $cmd = $input->{'action'};
 
-my $ret = {};
+my $props = {type => 'dyndns'};
 
-if ($cmd eq 'dyndns') {
+foreach (qw(
+    CustomService
+    Description
+    DynDns
+    DynServer
+    login
+    mx
+    password
+)) {
+    $props->{$_} = $input->{$_};
+}
 
-    my @dyndns;
-    my $ddb = esmith::ConfigDB->open_ro('dyndns');
-    foreach ($ddb->get_all_by_prop('type'=>'dyndns')) {
-        my %props = $_->props();
-        delete($props{'type'});
-        $props{'name'} = $_->key;
-        push(@dyndns, \%props);
-    }
-    $ret->{'dyndns'} = \@dyndns;
+$db->new_record($input->{'name'}, $props);
 
-} elsif ($cmd eq 'configuration') {
-    my $db = esmith::ConfigDB->open_ro();
-    my %dyndns = (
-        DeamonUpdate => $db->get_prop('ddclient','DeamonUpdate'),
-        SSL => $db->get_prop('ddclient','SSL'),
-        urlcheckip => $db->get_prop('ddclient','urlcheckip'),
-        status => $db->get_prop('ddclient','status')
-    );
-    $ret->{'configuration'} = \%dyndns;
+esmith::event::set_json_log(1);
+
+if(esmith::event::event_signal($eventName, @eventArgs)) {
+    NethServer::ApiTools::success();
 } else {
-    NethServer::ApiTools::error();
+    NethServer::ApiTools::error("EventError", "create_action_failed", 1559997785);
 }
 
 print encode_json($ret);
