@@ -39,6 +39,13 @@ Vue.use(VueToggleButton);
 Vue.component('doc-info', DocInfo);
 Vue.use(VueGoodTable);
 
+import "./filters";
+Vue.directive("focus", {
+  inserted: function(el) {
+    el.focus();
+  }
+});
+
 Vue.use(VueI18n)
 const i18n = new VueI18n();
 
@@ -47,14 +54,14 @@ const router = new Router({
     mode: 'hash',
     base: process.env.BASE_URL,
     routes: [
-      { path: '/', redirect: '/dashboard'},
+      { path: '/', redirect: '/ddclients'},
       { path: '/ddclients', component: Ddclients },
       { path: '/settings', component: Settings },
       { path: '/logs', component: Logs },
       { path: '/about', name: 'about', component: About },
     ]
 })
-router.replace("/dashboard")
+router.replace("/ddclients")
 
 var app = new Vue({
     i18n,
