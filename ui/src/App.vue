@@ -27,7 +27,7 @@
             <router-link tag="li" to="/ddclients" active-class="active" class="list-group-item">
                 <a>
                     <span class="fa fa-cube"></span>
-                    <span class="list-group-item-value">{{$t('ddclient.title')}}</span>
+                    <span class="list-group-item-value">{{$t('dyndns.menu')}}</span>
                 </a>
             </router-link>
             <li class="li-empty"></li>
