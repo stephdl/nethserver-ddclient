@@ -22,7 +22,7 @@ export default {
         logsLoaded: false,
         logsContent: "",
         follow: false,
-        lines: 50
+        lines: 500
       }
     };
   },
@@ -40,7 +40,8 @@ export default {
           action: this.view.follow ? "follow" : "dump",
           lines: this.view.follow ? null : this.view.lines,
           mode: "file",
-          paths: ["/var/log/messages"]
+          paths: ["/var/log/messages"],
+          filter: "ddclient"
         },
         this.view.follow
           ? function(stream) {
