@@ -56,21 +56,22 @@ if ($cmd eq 'update') {
     }
 }
 elsif ($cmd eq 'configuration') {
-        foreach my $prop (qw(
-        DeamonUpdate
-        SSL
-        status
-        urlcheckip
+    my $cdb = esmith::ConfigDB->open();
+    foreach  (qw(
+          DeamonUpdate
+          SSL
+          status
+          urlcheckip
     )) {
-        $db->set_prop('ddclient', $_, $input->{$_});
+      $cdb->set_prop('ddclient', $_, $input->{$_});
     }
 
     esmith::event::set_json_log(1);
 
     if(esmith::event::event_signal($eventName, @eventArgs)) {
-        NethServer::ApiTools::success();
+      NethServer::ApiTools::success();
     } else {
-        NethServer::ApiTools::error("EventError", "update_action_failed", 1559997785);
+      NethServer::ApiTools::error("EventError", "update_action_failed", 1559997785);
     }
 }
 print encode_json($ret);
