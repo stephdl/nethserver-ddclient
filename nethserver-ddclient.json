@@ -1,6 +1,6 @@
 {
     "id": "nethserver-ddclient",
-    "name": "nethserver-ddclient",
+    "name": "Dynamic DNS",
     "summary": "Nethserver integration of ddclient",
     "description": "Nethserver integration of ddclient",
     "url": "",
