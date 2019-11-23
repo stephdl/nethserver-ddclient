@@ -291,7 +291,7 @@
                   for="textInput-modal-markup"
                 >{{$t('dyndns.mx')}}</label>
                 <div :class="'col-sm-9'">
-                  <input  required type="text" v-model="currentDyndns.mx" class="form-control">
+                  <input  type="text" v-model="currentDyndns.mx" class="form-control">
                   <span
                     v-if="currentDyndns.errors.mx.hasError"
                     class="help-block"
