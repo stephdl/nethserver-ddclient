@@ -1,6 +1,6 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 1.0.7
+Version: 2.0.0
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -59,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Sat Nov 23 2019 stephane de labrusse <stephdl@de-labrusse.fr> 2.0.0-1
+- Cockpit release
+
 * Mon Aug 27 2018 stephane de labrusse <stephdl@de-labrusse.fr> 1.0.7-1
 - Dynu support added
 - DTDNS dropped
