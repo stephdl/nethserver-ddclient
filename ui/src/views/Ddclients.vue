@@ -112,7 +112,7 @@
 
           <div  class="list-view-pf-main-info small-list">
             <div class="list-view-pf-left">
-              <span :class="['fa', 'list-view-pf-icon-sm', 'fa fa-user']"></span>
+              <span :class="['fa', 'list-view-pf-icon-sm', 'fa fa-refresh']"></span>
             </div>
             <div class="list-view-pf-body">
               <div class="list-view-pf-description">
