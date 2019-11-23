@@ -32,9 +32,9 @@ if ($data['action'] == 'update') {
 }
 
 # validator routines
-$DynDns = array ('dnspark','dslreports1','dyndns1','dyndns2','easydns',
+$DynDnsCustom = array ('dnspark','dslreports1','dyndns1','dyndns2','easydns',
       'namecheap','zoneedit1','changeip','');
-$DynServer = $v->createValidator()->memberOf('CHANGEIP','DNSDYNAMIC','DNSPARK',
+$DynDns = $v->createValidator()->memberOf('CHANGEIP','DNSDYNAMIC','DNSPARK',
       'DSLREPORTS','DYNDNS1','DYNDNS2','DYNDNS3','DYNDNSFREE','DYNHOST',
       'DYNU','EASYDNS','EURODYNDNS','FREEDNS','HAMMER','LOOPIA','NAMECHEAP','NOIP','SELFHOST','STRATO','ZONEDIT');
 $urlcheckip = $v->createValidator()->memberOf('checkip.dyndns.org','ipdetect.dnspark.com','checkip.dyndns.org:8245',
@@ -48,15 +48,18 @@ if (($data['action'] == 'create') || ($data['action'] == 'update')) {
     $v->declareParameter('CustomService', Validate::SERVICESTATUS);
     $v->declareParameter('Description', Validate::ANYTHING);
 
-    if (! in_array($data['DynDns'],$DynDns)) {
-        $v->addValidationError('DynDns','Bad_dyndns_protocol');
+    if ($data['CustomService'] === 'disabled') {
+        $v->declareParameter('DynDns',$DynDns);
+    } else {
+        if (! in_array($data['DynDns'],$DynDnsCustom)) {
+            $v->addValidationError('DynDns','Bad_dyndns_protocol');
+        }
     }
 
-    if ($data['CustomService'] === 'disabled') {
-        $v->declareParameter('DynServer',$DynServer);
-    } else {
+    if ($data['DynServer'] !== ''){
         $v->declareParameter('DynServer',Validate::HOSTNAME_FQDN);
     }
+
     $v->declareParameter('login', Validate::NOTEMPTY);
 
     if ($data['mx'] !== ''){

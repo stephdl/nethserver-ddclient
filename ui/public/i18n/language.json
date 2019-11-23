@@ -12,6 +12,7 @@
       "Description": "Description",
       "CustomService":"Custom Provider settings",
       "DynServer": "Server Name (FQDN)",
+      "DynDns": "Provider list",
       "Dyndns_Protocol":"Ddclient protocol",
       "Login": "Login",
       "password": "Password",

@@ -181,17 +181,17 @@
               
               <div 
                v-if="currentDyndns.CustomService === 'disabled'"
-               :class="['form-group', currentDyndns.errors.DynServer.hasError ? 'has-error' : '']">
+               :class="['form-group', currentDyndns.errors.DynDns.hasError ? 'has-error' : '']">
                <label
                  class="col-sm-3 control-label"
                  for="textInput-modal-markup"
-               >{{$t('dyndns.DynServer')}}
+               >{{$t('dyndns.DynDns')}}
                </label>
                <div class="col-sm-9">
                  <select
                    required
                    type="text"
-                   v-model="currentDyndns.DynServer"
+                   v-model="currentDyndns.DynDns"
                    class="combobox form-control"
                  >
                    <option value="CHANGEIP">{{$t('dyndns.CHANGEIP')}}</option>
@@ -215,9 +215,9 @@
                    <option value="STRATO">{{$t('dyndns.STRATO')}}</option>
                    <option value="ZONEDIT">{{$t('dyndns.ZONEDIT')}}</option>
                  </select>
-                 <span v-if="currentDyndns.errors.DynServer.hasError" class="help-block">
+                 <span v-if="currentDyndns.errors.DynDns.hasError" class="help-block">
                    {{$t('validation.validation_failed')}}:
-                   {{$t('validation.'+currentDyndns.errors.DynServer.message)}}
+                   {{$t('validation.'+currentDyndns.errors.DynDns.message)}}
                   </span>
                  </div>
              </div>
