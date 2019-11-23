@@ -1,0 +1,78 @@
+#!/usr/bin/php
+<?php
+/*
+ * This script is part of NethServer.
+ *
+ * NethServer is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License,
+ * or any later version.
+ *
+ * NethServer is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with NethServer.  If not, see COPYING.
+*/
+require_once("/usr/libexec/nethserver/api/lib/Helpers.php");
+$data = readInput();
+$v = new LegacyValidator($data);
+$cmd = $data['action'];
+$cdb = new EsmithDatabase('dyndns');
+if ($data['action'] == 'update') {
+    if (!$cdb->getKey($data['name'])) {
+        $v->addValidationError('name', 'cron_not_found');
+    }
+} else if ($data['action'] == 'create') {
+    if ($cdb->getKey($data['name'])) {
+        $v->addValidationError('name', 'cron_already_exists');
+    }
+}
+
+# validator routines
+$DynDns = array ('dnspark','dslreports1','dyndns1','dyndns2','easydns',
+      'namecheap','zoneedit1','changeip','');
+$DynServer = $v->createValidator()->memberOf('CHANGEIP','DNSDYNAMIC','DNSPARK',
+      'DSLREPORTS','DYNDNS1','DYNDNS2','DYNDNS3','DYNDNSFREE','DYNHOST',
+      'DYNU','EASYDNS','EURODYNDNS','FREEDNS','HAMMER','LOOPIA','NAMECHEAP','NOIP','SELFHOST','STRATO','ZONEDIT');
+$urlcheckip = $v->createValidator()->memberOf('checkip.dyndns.org','ipdetect.dnspark.com','checkip.dyndns.org:8245',
+      'ip.changeip.com','myip.dnsdynamic.org');
+
+# Validators
+
+//update or create validators
+if (($data['action'] == 'create') || ($data['action'] == 'update')) {
+    $v->declareParameter('name', Validate::HOSTNAME_FQDN);
+    $v->declareParameter('CustomService', Validate::SERVICESTATUS);
+    $v->declareParameter('Description', Validate::ANYTHING);
+
+    if (! in_array($data['DynDns'],$DynDns)) {
+        $v->addValidationError('DynDns','Bad_dyndns_protocol');
+    }
+
+    if ($data['CustomService'] === 'disabled') {
+        $v->declareParameter('DynServer',$DynServer);
+    } else {
+        $v->declareParameter('DynServer',Validate::HOSTNAME_FQDN);
+    }
+    $v->declareParameter('login', Validate::NOTEMPTY);
+
+    if ($data['mx'] !== ''){
+        $v->declareParameter('mx', Validate::HOSTNAME_FQDN);
+    } 
+} else if ($data['action'] == 'configuration') {
+// settings validator
+    $v->declareParameter('DeamonUpdate', Validate::POSITIVE_INTEGER);
+    $v->declareParameter('SSL', $v->createValidator()->memberOf('yes','no'));
+    $v->declareParameter('status', Validate::SERVICESTATUS);
+    $v->declareParameter('urlcheckip', $urlcheckip);
+}
+
+# Validate the input
+if ($v->validate()) {
+    success();
+} else {
+    error($v);
+}

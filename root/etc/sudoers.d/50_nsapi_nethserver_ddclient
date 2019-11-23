@@ -1,0 +1,13 @@
+#
+# API delegation for ddclient
+#
+
+Cmnd_Alias NSAPI_NETHSERVER_DDCLIENT = \
+    /usr/libexec/nethserver/api/nethserver-ddclient/create, \
+    /usr/libexec/nethserver/api/nethserver-ddclient/delete, \
+    /usr/libexec/nethserver/api/nethserver-ddclient/read, \
+    /usr/libexec/nethserver/api/nethserver-ddclient/update, \
+    /usr/libexec/nethserver/api/nethserver-ddclient/validate
+
+# server-manager does not require a tty
+Defaults!NSAPI_NETHSERVER_DDCLIENT !requiretty
