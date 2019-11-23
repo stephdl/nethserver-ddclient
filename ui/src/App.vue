@@ -26,14 +26,14 @@
         <ul class="list-group panel">
             <router-link tag="li" to="/ddclients" active-class="active" class="list-group-item">
                 <a>
-                    <span class="fa fa-cube"></span>
+                    <span class="pficon pficon-process-automation"></span>
                     <span class="list-group-item-value">{{$t('dyndns.menu')}}</span>
                 </a>
             </router-link>
             <li class="li-empty"></li>
             <router-link tag="li" to="/settings" active-class="active" class="list-group-item">
                 <a>
-                    <span class="fa fa-at"></span>
+                    <span class="pficon pficon-settings"></span>
                     <span class="list-group-item-value">{{$t('settings.title')}}</span>
                 </a>
             </router-link>
