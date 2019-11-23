@@ -2,7 +2,7 @@
     "save":"Save",
     "edit":"Edit",
     "dyndns":{
-      "title": "Dynamic DNS PRovider",
+      "title": "Dynamic DNS Provider",
       "menu": "Ddclient",
       "actions":"Actions",
       "create_dyndns":"Create",
@@ -45,7 +45,9 @@
       "dyndns_updated_error": "The service has not been well updated",
       "dyndns_created_error": "The service has not been well created",
       "dyndns_deleted_ok":"The service has been well deleted",
-      "dyndns_deleted_error":"The service has not been deleted"
+      "dyndns_deleted_error":"The service has not been deleted",
+      "jobs_not_found_desc": "Here you can update your external IP to your dynamic dns providers",
+      "jobs_not_found": "You have no ddclient settings"
     },
     "settings": {
         "title": "Settings",
@@ -53,8 +55,10 @@
         "status": "Enable the service",
         "SSL":"Use SSL",
         "DeamonUpdate": "Deamon Update Frequency",
-        "urlcheckip":"Select the service to check your external IP",
-        "seconds": "seconds"
+        "urlcheckip":"Service to check your external IP",
+        "seconds": "seconds",
+        "settings_updated_ok": "The settings has been updated",
+        "settings_updated_error": "The settings has not been well updated"
     },
     "about": {
         "title": "About",
@@ -67,6 +71,8 @@
     "stop_follow": "Stop"
     },
     "validation":{
-      "validation_failed": "The validation has failed"
+      "validation_failed": "The validation has failed",
+      "valid_hostname_fqdn_1_9223372036854775807": "You must set a valid fully qualified domain name (FQDN)",
+      "Bad_dyndns_protocol":"This is not a valid ddclient protocol, please check the official documentation"
     }
 }
