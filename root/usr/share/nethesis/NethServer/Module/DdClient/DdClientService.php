@@ -47,11 +47,8 @@ class DdClientService extends \Nethgui\Controller\AbstractController
 
         $view['urlcheckipDatasource'] = \Nethgui\Renderer\AbstractRenderer::hashToDatasource(array(
                  'checkip.dyndns.org' => $view->translate('checkip.dyndns.org'),
-                 'ipdetect.dnspark.com' => $view->translate('ipdetect.dnspark.com'),
                  'checkip.dyndns.org:8245' => $view->translate('checkip.dyndns.org:8245'),
-                 'ip.changeip.com' => $view->translate('ip.changeip.com'),
-                 'myip.dnsdynamic.org' => $view->translate('myip.dnsdynamic.org'),
-
+                 'ip.changeip.com' => $view->translate('ip.changeip.com')
        ));
 
 }

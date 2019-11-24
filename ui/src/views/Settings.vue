@@ -86,10 +86,10 @@
               class="combobox form-control"
             >
               <option value="checkip.dyndns.org">checkip.dyndns.org</option>
-              <option value="ipdetect.dnspark.com">ipdetect.dnspark.com</option>
+              <!-- <option value="ipdetect.dnspark.com">ipdetect.dnspark.com</option> -->
               <option value="checkip.dyndns.org:8245">checkip.dyndns.org:8245</option>
               <option value="ip.changeip.com">ip.changeip.com</option>
-              <option value="myip.dnsdynamic.org">myip.dnsdynamic.org</option>
+              <!-- <option value="myip.dnsdynamic.org">myip.dnsdynamic.org</option> -->
             </select>
             <span v-if="errors.urlcheckip.hasError" class="help-block">
               {{$t('validation.validation_failed')}}:
