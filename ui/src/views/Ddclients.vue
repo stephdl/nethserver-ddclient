@@ -157,7 +157,7 @@
                   for="textInput-modal-markup"
                 >{{$t('dyndns.Description')}}</label>
                 <div :class="'col-sm-9'">
-                  <input   required type="text" v-model="currentDyndns.Description" class="form-control">
+                  <input type="text" v-model="currentDyndns.Description" class="form-control">
                   <span
                     v-if="currentDyndns.errors.Description.hasError"
                     class="help-block"
@@ -195,8 +195,8 @@
                    class="combobox form-control"
                  >
                    <option value="CHANGEIP">{{$t('dyndns.CHANGEIP')}}</option>
-                   <option value="DNSDYNAMIC">{{$t('dyndns.DNSDYNAMIC')}}</option>
-                   <option value="DNSPARK">{{$t('dyndns.DNSPARK')}}</option>
+                   <!-- <option value="DNSDYNAMIC">{{$t('dyndns.DNSDYNAMIC')}}</option> -->
+                   <!-- <option value="DNSPARK">{{$t('dyndns.DNSPARK')}}</option> -->
                    <option value="DSLREPORTS">{{$t('dyndns.DSLREPORTS')}}</option>
                    <option value="DYNDNS1">{{$t('dyndns.DYNDNS1')}}</option>
                    <option value="DYNDNS2">{{$t('dyndns.DYNDNS2')}}</option>
@@ -207,7 +207,7 @@
                    <option value="EASYDNS">{{$t('dyndns.EASYDNS')}}</option>
                    <option value="EURODYNDNS">{{$t('dyndns.EURODYNDNS')}}</option>
                    <option value="FREEDNS">{{$t('dyndns.FREEDNS')}}</option>
-                   <option value="HAMMER">{{$t('dyndns.HAMMER')}}</option>
+                   <!-- <option value="HAMMER">{{$t('dyndns.HAMMER')}}</option> -->
                    <option value="LOOPIA">{{$t('dyndns.LOOPIA')}}</option>
                    <option value="NAMECHEAP">{{$t('dyndns.NAMECHEAP')}}</option>
                    <option value="NOIP">{{$t('dyndns.NOIP')}}</option>
