@@ -1,6 +1,8 @@
 {
     "save":"Save",
     "edit":"Edit",
+    "enable":"Enable",
+    "disable": "Disable",
     "dyndns":{
       "title": "Dynamic DNS Provider",
       "menu": "Ddclient",
@@ -55,7 +57,7 @@
         "configuration":"Configuration",
         "status": "Enable the service",
         "SSL":"Use SSL",
-        "DeamonUpdate": "Deamon Update Frequency",
+        "DeamonUpdate": "Daemon update frequency",
         "urlcheckip":"Service to check your external IP",
         "seconds": "seconds",
         "settings_updated_ok": "The settings has been updated",

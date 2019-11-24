@@ -46,16 +46,7 @@ if ($cmd eq 'update') {
     )) {
         $db->set_prop($input->{'name'}, $_, $input->{$_});
     } 
-
-    esmith::event::set_json_log(1);
-
-    if(esmith::event::event_signal($eventName, @eventArgs)) {
-        NethServer::ApiTools::success();
-     } else {
-        NethServer::ApiTools::error("EventError", "update_action_failed", 1559997785);
-    }
-}
-elsif ($cmd eq 'configuration') {
+} elsif ($cmd eq 'configuration') {
     my $cdb = esmith::ConfigDB->open();
     foreach  (qw(
           DeamonUpdate
@@ -65,13 +56,20 @@ elsif ($cmd eq 'configuration') {
     )) {
       $cdb->set_prop('ddclient', $_, $input->{$_});
     }
-
-    esmith::event::set_json_log(1);
-
-    if(esmith::event::event_signal($eventName, @eventArgs)) {
-      NethServer::ApiTools::success();
-    } else {
-      NethServer::ApiTools::error("EventError", "update_action_failed", 1559997785);
-    }
+} elsif ($cmd eq 'enable') {
+    $db->set_prop($input->{'name'}, 'status', 'enabled');
+} elsif ($cmd eq 'disable') {
+    $db->set_prop($input->{'name'}, 'status', 'disabled');
+} else {
+    error();
 }
+
+esmith::event::set_json_log(1);
+
+if(esmith::event::event_signal($eventName, @eventArgs)) {
+    NethServer::ApiTools::success();
+} else {
+    NethServer::ApiTools::error("EventError", "update_action_failed", 1559997785);
+}
+
 print encode_json($ret);

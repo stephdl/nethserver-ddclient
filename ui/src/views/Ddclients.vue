@@ -91,7 +91,7 @@
                 <span class="fa fa-ellipsis-v"></span>
               </button>
               <ul class="dropdown-menu dropdown-menu-right">
-                <!-- <li>
+                <li>
                   <a @click="toggleStatusDyndns(m)">
                     <span
                       :class="['fa', m.status == 'enabled' ? 'fa-lock' : 'fa-check', 'span-right-margin']"
@@ -99,7 +99,7 @@
                     {{m.status == 'enabled' ? $t('disable') : $t('enable')}}
                   </a>
                 </li>
-                <li role="presentation" class="divider"></li> -->
+                <li role="presentation" class="divider"></li>
                 <li>
                   <a @click="openDeleteDyndns(m)">
                     <span class="fa fa-times span-right-margin"></span>
@@ -394,7 +394,8 @@ export default {
         errors: this.initDyndnsErrors(),
         isLoading: false,
         isEdit: false,
-        togglePass: true
+        togglePass: true,
+        status: "enabled"
       };
     },
     initDyndnsErrors() {
@@ -488,6 +489,7 @@ export default {
         login: dyndns.login,
         mx: dyndns.mx,
         password:dyndns.password,
+        status: "enabled"
       };
 
       context.currentDyndns.isLoading = true;

@@ -23,6 +23,8 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
         {
 
         my $dns      = $host->prop('DynDns') || '';
+        my $status      = $host->prop('status') || 'enabled';
+        next if ($status eq 'disabled');
         next if ($dns eq '');
         $dns =~ tr/a-z/A-Z/;
         my $login    = $host->prop('login');
@@ -256,4 +258,3 @@ foreach  my $host ($hdb->get_all_by_prop('type', 'dyndns'))
         }
     }
 }
-
