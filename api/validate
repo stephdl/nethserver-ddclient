@@ -33,7 +33,8 @@ if ($data['action'] == 'update') {
 
 # validator routines
 $DynDnsCustom = array ('dnspark','dslreports1','dyndns1','dyndns2','easydns',
-      'namecheap','zoneedit1','changeip','');
+      'namecheap','zoneedit1','changeip','cloudflare','concont','dtdns','duckdns',
+      'freedns','googledomains','hammernode1','noip','nsupdate','sitelutions','');
 $DynDns = $v->createValidator()->memberOf('CHANGEIP','DNSDYNAMIC','DNSPARK',
       'DSLREPORTS','DYNDNS1','DYNDNS2','DYNDNS3','DYNDNSFREE','DYNHOST',
       'DYNU','EASYDNS','EURODYNDNS','FREEDNS','HAMMER','LOOPIA','NAMECHEAP','NOIP','SELFHOST','STRATO','ZONEDIT');
@@ -51,7 +52,7 @@ if (($data['action'] == 'create') || ($data['action'] == 'update')) {
     if ($data['CustomService'] === 'disabled') {
         $v->declareParameter('DynDns',$DynDns);
     } else {
-        if (! in_array($data['DynDns'],$DynDnsCustom)) {
+        if (! in_array(strtolower($data['DynDns']),$DynDnsCustom)) {
             $v->addValidationError('DynDns','Bad_dyndns_protocol');
         }
     }
