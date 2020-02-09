@@ -1,6 +1,6 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 2.0.2
+Version: 2.0.3
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -59,6 +59,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Sun Feb 09 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 2.0.3-1
+- Better log display with Regexp
+
 * Tue Nov 26 2019 stephane de Labrusse <stephdl@de-labrusse.fr> 2.0.2-1
 - Compare protocol with lower case
 
