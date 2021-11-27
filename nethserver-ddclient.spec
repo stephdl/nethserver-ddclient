@@ -1,6 +1,6 @@
 Summary: NethServer configuration for ddclient
 Name: nethserver-ddclient
-Version: 2.0.3
+Version: 2.0.4
 Release: 1%{?dist}
 License: GPL
 Source: %{name}-%{version}.tar.gz
@@ -58,6 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_nsdbconfdir}/dyndns
 
 %changelog
+* Sat Nov 27 2021 stephane de Labrusse <stephdl@de-labrusse.fr> 2.0.4-1
+- Add checkipdynu.com and force nossl for dyndns PR#25
+
 * Sun Feb 09 2020 stephane de Labrusse <stephdl@de-labrusse.fr> 2.0.3-1
 - Better log display with Regexp
 
