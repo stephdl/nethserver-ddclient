@@ -39,7 +39,7 @@ $DynDns = $v->createValidator()->memberOf('CHANGEIP','DNSDYNAMIC','DNSPARK',
       'DSLREPORTS','DYNDNS1','DYNDNS2','DYNDNS3','DYNDNSFREE','DYNHOST',
       'DYNU','EASYDNS','EURODYNDNS','FREEDNS','HAMMER','LOOPIA','NAMECHEAP','NOIP','SELFHOST','STRATO','ZONEDIT');
 $urlcheckip = $v->createValidator()->memberOf('checkip.dyndns.org','ipdetect.dnspark.com','checkip.dyndns.org:8245',
-      'ip.changeip.com','myip.dnsdynamic.org');
+      'ip.changeip.com','myip.dnsdynamic.org', 'checkip.dynu.com');
 
 # Validators
 
