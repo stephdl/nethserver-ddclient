@@ -27,7 +27,7 @@
               </div>
         </div>
         <div
-          v-if="configuration.status"
+          v-if="configuration.status && ! configuration.urlcheckip.match(/checkip.dyndns.org/g)"
           :class="['form-group', errors.SSL.hasError ? 'has-error' : '']"
         >
           <label
