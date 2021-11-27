@@ -2,6 +2,9 @@
 my $status = ${ddclient}{status} || 'disabled';
 my $deamonupdate = ${ddclient}{DeamonUpdate} || '300';
 my $ssl = ${ddclient}{SSL} || 'yes';
+my $urlcheckip = ${ddclient}{urlcheckip} || 'checkip.dyndns.org';
+$ssl = 'no' if ( $urlcheckip =~ 'checkip.dyndns.org' );
+
 return '# ddclient is disabled in the configuration database' if $status ne 'enabled';
 
 $OUT .= qq(
@@ -11,6 +14,5 @@ mail=admin\@$DomainName              # mail update msgs to root
 mail-failure=admin\@$DomainName      # mail failure msgs to root
 pid=/var/run/ddclient/ddclient.pid                       # record PID in file.
 ssl=$ssl
-#);
+);
 }
-
